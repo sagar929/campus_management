@@ -10,6 +10,9 @@ export default function AuthPage() {
   const [form, setForm] = useState({ username: "", password: "", role: "" });
 
   const handleChange = (e) => {
+    // { ...form } copies the current form state
+    // [e.target.name] dynamically sets the property name based on the input field's name
+    // e.target.value gets the value from the input field
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 

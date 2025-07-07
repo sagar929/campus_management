@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import axios from 'axios'; // Add this import
 
 const RegisterComplaint = () => {
   const { user, logout } = useAuth();
@@ -18,15 +19,10 @@ const RegisterComplaint = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:9000/api/auth/complaint", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error("Failed to submit complaint");
+      const res = await axios.post("http://localhost:9000/api/auth/complaint", form);
       alert("Complaint registered successfully!");
     } catch (err) {
-      alert(err.message);
+      alert(err.response?.data?.message || err.message || "Failed to submit complaint");
     }
   };
 
