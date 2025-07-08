@@ -19,7 +19,7 @@ const RegisterComplaint = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:9000/api/auth/complaint", form);
+      const res = await axios.post("https://campus-management-backend.onrender.com/api/auth/complaint", form);
       alert("Complaint registered successfully!");
     } catch (err) {
       alert(err.response?.data?.message || err.message || "Failed to submit complaint");

@@ -20,8 +20,8 @@ export default function AuthPage() {
   //   e.preventDefault();
   //   try {
   //     const endpoint = isRegister
-  //       ? "http://localhost:9000/api/auth/register"
-  //       : "http://localhost:9000/api/auth/login";
+  //       ? "https://campus-management-backend.onrender.com/api/auth/register"
+  //       : "https://campus-management-backend.onrender.com/api/auth/login";
   //     const res = await fetch(endpoint, {
   //       method: "POST",
   //       headers: { "Content-Type": "application/json" },
@@ -42,8 +42,8 @@ export default function AuthPage() {
   e.preventDefault();
   try {
     const endpoint = isRegister
-      ? "http://localhost:9000/api/auth/register"
-      : "http://localhost:9000/api/auth/login";
+      ? "https://campus-management-backend.onrender.com/api/auth/register"
+      : "https://campus-management-backend.onrender.com/api/auth/login";
 
     const res = await axios.post(endpoint, form); // Axios automatically sets headers & stringifies JSON
 

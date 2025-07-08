@@ -29,7 +29,7 @@ const ManagerDashboard = () => {
   useEffect(() => {
     if (!selectedDept) return;
     setLoading(true);
-    fetch(`http://localhost:9000/api/complaints/${selectedDept}`, {
+    fetch(`https://campus-management-backend.onrender.com/api/complaints/${selectedDept}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -89,7 +89,7 @@ const ManagerDashboard = () => {
       </div>
       <button
         onClick={async () => {
-         await fetch(`http://localhost:9000/api/auth/complaint/${c._id}`, {
+         await fetch(`https://campus-management-backend.onrender.com/api/auth/complaint/${c._id}`, {
   method: "DELETE",
   headers: { Authorization: `Bearer ${token}` }
 });
