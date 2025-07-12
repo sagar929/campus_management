@@ -7,7 +7,7 @@ export default function AuthPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [isRegister, setIsRegister] = useState(false);
-  const [form, setForm] = useState({ username: "", password: "", role: "" });
+  const [form, setForm] = useState({ username: "", email: "", password: "", role: "" });
 
   const handleChange = (e) => {
     // { ...form } copies the current form state
@@ -45,7 +45,7 @@ export default function AuthPage() {
       ? "https://campus-management-backend.onrender.com/api/auth/register"
       : "https://campus-management-backend.onrender.com/api/auth/login";
 
-    const res = await axios.post(endpoint, form); // Axios automatically sets headers & stringifies JSON
+    const res = await axios.post(endpoint, form); 
 
     login(res.data.token, res.data.user);
     navigate("/dashboard");
@@ -78,22 +78,32 @@ export default function AuthPage() {
             required
             className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
           />
-          {isRegister && (
-            <select
-              name="role"
-              value={form.role}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition bg-white"
-            >
-              <option value="" disabled>
-                Select Role
-              </option>
-              <option value="user">User</option>
-              <option value="manager">Manager</option>
-              {/* <option value="admin">Admin</option> */}
-            </select>
-          )}
+         {isRegister && (
+  <>
+    <input
+      name="email"
+      type="email"
+      placeholder="Email"
+      value={form.email}
+      onChange={handleChange}
+      required
+      className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+    />
+    <select
+      name="role"
+      value={form.role}
+      onChange={handleChange}
+      required
+      className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition bg-white"
+    >
+      <option value="" disabled>
+        Select Role
+      </option>
+      <option value="user">User</option>
+      <option value="manager">Manager</option>
+    </select>
+  </>
+)}
           <button
             type="submit"
             className="w-full py-3 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-800 transition"
